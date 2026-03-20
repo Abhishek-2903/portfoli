@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Abhishek Singh</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+
+:root{
+  --black:#080808;
+  --off-black:#111;
+  --dark:#1a1a1a;
+  --mid:#444;
+  --muted:#888;
+  --dim:#bbb;
+  --light:#e8e8e8;
+  --off-white:#f4f4f2;
+  --white:#fafafa;
+  --rule:rgba(255,255,255,0.1);
+}
+
+body{
+  background:var(--black);
+  color:var(--off-white);
+  font-family:'Instrument Sans',sans-serif;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor{
+  position:fixed;width:10px;height:10px;
+  background:var(--white);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);
+  mix-blend-mode:difference;
+}
+.cursor-ring{
+  position:fixed;width:36px;height:36px;
+  border:1px solid rgba(255,255,255,0.45);
+  border-radius:50%;pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);
+  mix-blend-mode:difference;
+}
+
+/* ── MARQUEE TICKER ── */
+.ticker{
+  background:var(--white);color:var(--black);
+  overflow:hidden;white-space:nowrap;
+  padding:9px 0;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;
+  position:fixed;top:0;left:0;right:0;z-index:300;
+}
+.ticker-inner{
+  display:inline-block;
+  animation:ticker 30s linear infinite;
+}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-sep{margin:0 2.2rem;opacity:0.35;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:28px;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:58px;
+  background:rgba(8,8,8,0.9);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--rule);
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-weight:900;font-size:1.05rem;
+  letter-spacing:0.02em;color:var(--white);
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{
+  color:var(--muted);text-decoration:none;
+  font-size:0.76rem;letter-spacing:0.1em;text-transform:uppercase;
+  font-weight:500;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-hire{
+  border:1px solid rgba(255,255,255,0.35);color:var(--white);
+  padding:0.42rem 1.2rem;font-size:0.74rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  text-decoration:none;font-weight:600;
+  transition:background 0.2s,color 0.2s;
+}
+.nav-hire:hover{background:var(--white);color:var(--black);}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;}
+.container{max-width:1080px;margin:0 auto;padding:0 5%;}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:flex-end;padding-top:86px;
+  border-bottom:1px solid var(--rule);
+}
+.hero-top{
+  padding:5rem 5% 0;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+}
+.hero-eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.7rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--muted);
+  margin-bottom:1.4rem;
+}
+.hero-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(4rem,9.5vw,8.5rem);
+  font-weight:900;line-height:0.92;
+  letter-spacing:-0.03em;color:var(--white);
+}
+.hero-name em{font-style:italic;color:var(--dim);}
+.hero-right{
+  max-width:300px;
+  border-left:1px solid var(--rule);
+  padding-left:2rem;padding-bottom:0.5rem;
+}
+.hero-desc{font-size:0.88rem;color:var(--muted);line-height:1.75;margin-bottom:1.2rem;}
+.hero-loc{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.68rem;color:var(--muted);
+  letter-spacing:0.1em;text-transform:uppercase;
+}
+.hero-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--rule);
+  padding:1.4rem 5%;flex-wrap:wrap;gap:1rem;margin-top:4rem;
+}
+.hero-stats{display:flex;gap:3rem;}
+.stat-n{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:900;
+  color:var(--white);line-height:1;
+}
+.stat-l{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.62rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.12em;margin-top:4px;
+}
+.hero-scroll{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.68rem;color:var(--muted);
+  letter-spacing:0.12em;text-transform:uppercase;
+  display:flex;align-items:center;gap:0.7rem;
+}
+.scroll-line{
+  width:36px;height:1px;background:var(--muted);
+  animation:spulse 2.2s ease-in-out infinite;
+}
+@keyframes spulse{0%,100%{width:36px;opacity:0.4}50%{width:65px;opacity:0.9}}
+
+/* ── SECTION HEADER ── */
+.sec-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:1.2rem;margin-bottom:3.5rem;flex-wrap:wrap;gap:1rem;
+}
+.sec-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.68rem;color:var(--muted);letter-spacing:0.15em;
+}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  font-weight:900;line-height:1;letter-spacing:-0.02em;
+}
+
+/* ── SKILLS ── */
+#skills{padding:6rem 0;}
+.skill-row{
+  display:grid;grid-template-columns:210px 1fr;
+  border-bottom:1px solid var(--rule);
+  transition:background 0.2s;
+}
+.skill-row:first-child{border-top:1px solid var(--rule);}
+.skill-row:hover{background:rgba(255,255,255,0.022);}
+.skill-cat{
+  padding:1.3rem 2rem 1.3rem 0;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.7rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.12em;
+  border-right:1px solid var(--rule);
+  display:flex;align-items:center;
+}
+.skill-items{
+  padding:1.3rem 0 1.3rem 2rem;
+  display:flex;flex-wrap:wrap;gap:0.45rem;align-items:center;
+}
+.pill{
+  border:1px solid rgba(255,255,255,0.12);
+  color:var(--muted);padding:0.28rem 0.8rem;
+  font-size:0.75rem;font-family:'IBM Plex Mono',monospace;
+  letter-spacing:0.04em;
+  transition:border-color 0.2s,color 0.2s,background 0.2s;
+}
+.pill:hover{border-color:rgba(255,255,255,0.5);color:var(--white);background:rgba(255,255,255,0.04);}
+
+/* ── EXPERIENCE ── */
+#experience{padding:6rem 0;border-top:1px solid var(--rule);}
+.exp-block{display:grid;grid-template-columns:240px 1fr;gap:4rem;align-items:start;}
+.exp-company{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-weight:900;margin-bottom:0.45rem;
+}
+.exp-period{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.68rem;color:var(--muted);
+  letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;
+}
+.exp-role-tag{
+  display:inline-block;border:1px solid rgba(255,255,255,0.12);
+  color:var(--muted);padding:0.3rem 0.75rem;
+  font-size:0.7rem;font-family:'IBM Plex Mono',monospace;
+  letter-spacing:0.05em;margin-bottom:1.5rem;
+}
+.exp-active{
+  display:flex;align-items:center;gap:0.5rem;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.65rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.1em;
+}
+.dot-live{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--white);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.exp-points{list-style:none;}
+.exp-points li{
+  padding:0.9rem 0 0.9rem 1.6rem;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  color:var(--muted);font-size:0.9rem;line-height:1.7;
+  position:relative;
+}
+.exp-points li:last-child{border-bottom:none;}
+.exp-points li::before{
+  content:'—';color:rgba(255,255,255,0.2);
+  font-family:'IBM Plex Mono',monospace;font-size:0.8rem;
+  position:absolute;left:0;top:0.98rem;
+}
+.exp-points strong{color:var(--off-white);font-weight:600;display:inline;font-family:inherit;font-size:inherit;}
+
+/* ── PROJECTS ── */
+#projects{padding:6rem 0;border-top:1px solid var(--rule);}
+.proj-item{
+  display:grid;grid-template-columns:56px 1fr 28px;
+  align-items:start;gap:2rem;
+  padding:2.2rem 0;border-bottom:1px solid var(--rule);
+  transition:padding-left 0.35s cubic-bezier(0.4,0,0.2,1);
+  cursor:default;
+}
+.proj-item:first-child{border-top:1px solid var(--rule);}
+.proj-item:hover{padding-left:0.8rem;}
+.proj-index{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;font-weight:900;
+  color:rgba(255,255,255,0.07);line-height:1;padding-top:4px;
+  transition:color 0.3s;
+}
+.proj-item:hover .proj-index{color:rgba(255,255,255,0.22);}
+.proj-type{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.63rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:0.45rem;
+}
+.proj-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.45rem;font-weight:700;margin-bottom:0.55rem;line-height:1.1;
+}
+.proj-desc{color:var(--muted);font-size:0.86rem;line-height:1.65;max-width:580px;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.38rem;margin-top:0.9rem;}
+.proj-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:0.63rem;
+  letter-spacing:0.05em;color:rgba(255,255,255,0.3);
+  border:1px solid rgba(255,255,255,0.08);padding:0.18rem 0.52rem;
+}
+.proj-arrow{
+  color:var(--muted);font-size:1.1rem;padding-top:6px;
+  transition:transform 0.3s,color 0.3s;flex-shrink:0;
+}
+.proj-item:hover .proj-arrow{transform:translate(3px,-3px);color:var(--white);}
+
+/* ── EDUCATION ── */
+#education{
+  padding:6rem 0;border-top:1px solid var(--rule);
+  background:var(--off-black);
+}
+.edu-row{display:grid;grid-template-columns:1fr auto;gap:5rem;align-items:center;}
+.edu-uni{
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;font-weight:900;line-height:1.1;margin-bottom:0.65rem;
+}
+.edu-degree{color:var(--muted);font-size:0.88rem;margin-bottom:0.5rem;}
+.edu-meta{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.68rem;color:var(--muted);
+  letter-spacing:0.1em;text-transform:uppercase;
+}
+.edu-gpa-big{
+  font-family:'Playfair Display',serif;
+  font-size:5.5rem;font-weight:900;line-height:1;
+  color:var(--white);letter-spacing:-0.04em;
+  border-left:1px solid var(--rule);padding-left:3rem;
+  text-align:right;
+}
+.edu-gpa-sub{
+  color:var(--muted);font-size:0.78rem;
+  font-family:'IBM Plex Mono',monospace;
+  letter-spacing:0.08em;text-transform:uppercase;
+  text-align:right;margin-top:0.3rem;padding-left:3rem;
+}
+
+/* ── CONTACT ── */
+#contact{padding:6rem 0 4rem;border-top:1px solid var(--rule);}
+.contact-big{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,6.5vw,5.5rem);
+  font-weight:900;line-height:0.95;
+  letter-spacing:-0.03em;margin-bottom:3rem;
+}
+.contact-big em{font-style:italic;color:var(--muted);}
+.contact-links{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);}
+.contact-link{
+  padding:2rem 2rem 2rem 0;border-right:1px solid var(--rule);
+  text-decoration:none;transition:background 0.2s;
+}
+.contact-link:last-child{border-right:none;padding-left:2rem;}
+.contact-link:nth-child(2){padding-left:2rem;}
+.contact-link:hover{background:rgba(255,255,255,0.025);}
+.cl-label{
+  font-family:'IBM Plex Mono',monospace;font-size:0.63rem;
+  color:var(--muted);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.5rem;
+}
+.cl-val{color:var(--off-white);font-size:0.86rem;font-weight:500;}
+.cl-arrow{color:var(--muted);font-size:0.78rem;margin-top:0.4rem;}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--rule);padding:1.4rem 5%;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.ft{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.75s ease,transform 0.75s ease;}
+.reveal.show{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links,.nav-hire{display:none;}
+  .hero-right{border-left:none;padding-left:0;border-top:1px solid var(--rule);padding-top:2rem;max-width:100%;}
+  .skill-row{grid-template-columns:1fr;}
+  .skill-cat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.07);padding-right:0;padding-bottom:0.6rem;}
+  .skill-items{padding-left:0;}
+  .exp-block{grid-template-columns:1fr;}
+  .proj-item{grid-template-columns:40px 1fr;}
+  .proj-arrow{display:none;}
+  .edu-row{grid-template-columns:1fr;}
+  .edu-gpa-big,.edu-gpa-sub{border-left:none;padding-left:0;border-top:1px solid var(--rule);padding-top:1.5rem;text-align:left;}
+  .contact-links{grid-template-columns:1fr;}
+  .contact-link{border-right:none;border-bottom:1px solid var(--rule);padding-left:0!important;padding-right:0!important;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-inner">
+    PRODUCT DEVELOPMENT ENGINEER <span class="ticker-sep">×</span>
+    REAL-TIME SYSTEMS <span class="ticker-sep">×</span>
+    DEFENSE TECH <span class="ticker-sep">×</span>
+    DELHI, INDIA <span class="ticker-sep">×</span>
+    FULL STACK <span class="ticker-sep">×</span>
+    GEOSPATIAL PLATFORMS <span class="ticker-sep">×</span>
+    IOT &amp; NAVIC <span class="ticker-sep">×</span>
+    OPEN TO WORK <span class="ticker-sep">×</span>
+    PRODUCT DEVELOPMENT ENGINEER <span class="ticker-sep">×</span>
+    REAL-TIME SYSTEMS <span class="ticker-sep">×</span>
+    DEFENSE TECH <span class="ticker-sep">×</span>
+    DELHI, INDIA <span class="ticker-sep">×</span>
+    FULL STACK <span class="ticker-sep">×</span>
+    GEOSPATIAL PLATFORMS <span class="ticker-sep">×</span>
+    IOT &amp; NAVIC <span class="ticker-sep">×</span>
+    OPEN TO WORK <span class="ticker-sep">×</span>
+  </span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Abhishek Singh</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:abhikmpr@gmail.com" class="nav-hire">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-top">
+    <div>
+      <div class="hero-eyebrow">— Product Development Engineer · Software</div>
+      <h1 class="hero-name">Abhi<em>shek</em><br/>Singh</h1>
+    </div>
+    <div class="hero-right">
+      <p class="hero-desc">Building real-time systems, defense-grade applications, and geospatial platforms. One year in — building things that actually matter.</p>
+      <div class="hero-loc">📍 Delhi, India &nbsp;·&nbsp; DTU 2024</div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-stats">
+      <div>
+        <div class="stat-n">200+</div>
+        <div class="stat-l">Concurrent Users</div>
+      </div>
+      <div>
+        <div class="stat-n">45%</div>
+        <div class="stat-l">Deploy Speedup</div>
+      </div>
+      <div>
+        <div class="stat-n">60fps</div>
+        <div class="stat-l">Frontend Render</div>
+      </div>
+      <div>
+        <div class="stat-n">5+</div>
+        <div class="stat-l">Live Projects</div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll to explore
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-num">01 / Skills</span>
+      <h2 class="sec-title">Technical Arsenal</h2>
+    </div>
+    <div class="reveal">
+      <div class="skill-row">
+        <div class="skill-cat">Backend</div>
+        <div class="skill-items">
+          <span class="pill">Node.js</span><span class="pill">FastAPI</span><span class="pill">NestJS</span>
+          <span class="pill">Kafka</span><span class="pill">Zookeeper</span><span class="pill">Express.js</span><span class="pill">WebSocket</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Frontend</div>
+        <div class="skill-items">
+          <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">Three.js</span>
+          <span class="pill">WebGL</span><span class="pill">TailwindCSS</span><span class="pill">Electron</span><span class="pill">Leaflet.js</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Database</div>
+        <div class="skill-items">
+          <span class="pill">MongoDB</span><span class="pill">MySQL</span><span class="pill">SQLite</span>
+          <span class="pill">IndexedDB</span><span class="pill">Dexie</span><span class="pill">SQL.JS</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">IoT &amp; Hardware</div>
+        <div class="skill-items">
+          <span class="pill">Raspberry Pi 5</span><span class="pill">NavIC GPS</span>
+          <span class="pill">IMU Sensors</span><span class="pill">Python</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Languages</div>
+        <div class="skill-items">
+          <span class="pill">JavaScript</span><span class="pill">TypeScript</span>
+          <span class="pill">C++</span><span class="pill">Java</span><span class="pill">SQL</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Tools</div>
+        <div class="skill-items">
+          <span class="pill">Git</span><span class="pill">Docker</span><span class="pill">Postman</span><span class="pill">CI/CD</span><span class="pill">VS Code</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-num">02 / Experience</span>
+      <h2 class="sec-title">Where I've Worked</h2>
+    </div>
+    <div class="exp-block reveal">
+      <div>
+        <div class="exp-company">Mechphy</div>
+        <div class="exp-period">Jul 2024 – Present</div>
+        <div class="exp-role-tag">Product Dev Engineer · Software</div>
+        <div class="exp-active">
+          <div class="dot-live"></div>
+          Currently Active
+        </div>
+      </div>
+      <ul class="exp-points">
+        <li>Developed offline, real-time training system for <strong>Garud Air Force Commandos</strong> using Kafka, FastAPI, Zookeeper, and MongoDB — engineered for mission-critical reliability.</li>
+        <li>Built scalable event-driven backend handling streaming data with <strong>sub-200ms latency</strong> and zero downtime across distributed nodes.</li>
+        <li>Designed Next.js frontend with offline map rendering and <strong>real-time monitoring dashboards</strong> for live situational awareness.</li>
+        <li>Implemented fault-tolerant distributed architecture with automatic failover and low-latency inter-service communication.</li>
+        <li>Built <strong>Electron desktop app</strong> for deployment in fully offline, air-gapped environments.</li>
+        <li>Full-stack real-time web app supporting <strong>200+ concurrent users</strong> via WebSocket API with React/Next.js and Node.js.</li>
+        <li>Achieved <strong>60 FPS frontend rendering</strong> and reduced deployment time by 45% through CI/CD automation.</li>
+        <li>Built 3D data visualisation using Three.js, WebGL, and geospatial APIs (GeoJSON) with state management via IndexedDB/Dexie.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-num">03 / Projects</span>
+      <h2 class="sec-title">Selected Work</h2>
+    </div>
+    <div class="reveal">
+
+      <div class="proj-item">
+        <div class="proj-index">01</div>
+        <div>
+          <div class="proj-type">Defense · Embedded Systems</div>
+          <div class="proj-name">Inertial Navigation System (INS)</div>
+          <div class="proj-desc">Precision artillery positioning using Raspberry Pi 5 with NavIC GPS and IMU sensors. Delivers accurate targeting in GPS-denied, electronically jammed environments without relying on foreign satellite infrastructure.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Raspberry Pi 5</span><span class="proj-tag">NavIC GPS</span><span class="proj-tag">IMU</span><span class="proj-tag">Python</span>
+          </div>
+        </div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-index">02</div>
+        <div>
+          <div class="proj-type">Defense · Indigenous Navigation</div>
+          <div class="proj-name">NavIC-Based Positioning System</div>
+          <div class="proj-desc">Indigenous positioning built on India's own NavIC satellite system. Supports real-time tracking for defense ops, drone guidance, and ground forces — eliminating foreign GPS dependency entirely.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">NavIC</span><span class="proj-tag">Satellite Nav</span><span class="proj-tag">Embedded</span><span class="proj-tag">Real-Time</span>
+          </div>
+        </div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-index">03</div>
+        <div>
+          <div class="proj-type">Defense · Real-Time Systems</div>
+          <div class="proj-name">Garud Commando Training Platform</div>
+          <div class="proj-desc">Offline real-time training simulation for Indian Air Force Garud commandos. Kafka-driven streaming backend, live monitoring dashboards, and full offline deployment via Electron in air-gapped environments.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Kafka</span><span class="proj-tag">FastAPI</span><span class="proj-tag">Zookeeper</span><span class="proj-tag">MongoDB</span><span class="proj-tag">Electron</span>
+          </div>
+        </div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-index">04</div>
+        <div>
+          <div class="proj-type">Geospatial · Offline-First · Live</div>
+          <div class="proj-name">GeoPulse</div>
+          <div class="proj-desc">Offline-first web mapping platform with multi-format map downloads (MBTiles, ZIP, GeoPackage, GeoTIFF). Modular basemaps, real-time tile estimation. Production deployed at geopulsesforu.business.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">Next.js</span><span class="proj-tag">Leaflet.js</span><span class="proj-tag">SQLite</span><span class="proj-tag">GeoJSON</span>
+          </div>
+        </div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-index">05</div>
+        <div>
+          <div class="proj-type">Full Stack · Social Impact</div>
+          <div class="proj-name">Exservicemen Job Portal</div>
+          <div class="proj-desc">Veteran employment platform with advanced job matching, resume parsing, employer dashboards, and automated notifications — built specifically for Indian defence veterans re-entering the workforce.</div>
+          <div class="proj-tags">
+            <span class="proj-tag">React</span><span class="proj-tag">Next.js</span><span class="proj-tag">Node.js</span><span class="proj-tag">MySQL</span>
+          </div>
+        </div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-num">04 / Education</span>
+      <h2 class="sec-title">Academic Background</h2>
+    </div>
+    <div class="edu-row reveal">
+      <div>
+        <div class="edu-uni">Delhi Technological University</div>
+        <div class="edu-degree">B.Tech — Mechanical Engineering</div>
+        <div class="edu-meta" style="margin-top:0.8rem;">New Delhi, India &nbsp;·&nbsp; 2020 – 2024</div>
+      </div>
+      <div>
+        <div class="edu-gpa-big">7.96</div>
+        <div class="edu-gpa-sub">CGPA / 10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="sec-num">05 / Contact</span>
+      <h2 class="sec-title">Get In Touch</h2>
+    </div>
+    <div class="reveal">
+      <div class="contact-big">Let's build<br/><em>something</em><br/>real.</div>
+      <div class="contact-links">
+        <a href="mailto:abhikmpr@gmail.com" class="contact-link">
+          <div class="cl-label">Email</div>
+          <div class="cl-val">abhikmpr@gmail.com</div>
+          <div class="cl-arrow">↗</div>
+        </a>
+        <a href="tel:+918799773715" class="contact-link">
+          <div class="cl-label">Phone</div>
+          <div class="cl-val">+91 87997 73715</div>
+          <div class="cl-arrow">↗</div>
+        </a>
+        <a href="https://linkedin.com/in/abhishek-singh-866842202" target="_blank" class="contact-link">
+          <div class="cl-label">LinkedIn</div>
+          <div class="cl-val">abhishek-singh-866842202</div>
+          <div class="cl-arrow">↗</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">© 2025 Abhishek Singh</div>
+  <div class="ft">Delhi, India 🇮🇳</div>
+</footer>
+
+<script>
+// Custom cursor
+const cur=document.getElementById('cur');
+const ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+});
+(function animRing(){
+  rx+=(mx-rx)*0.11;ry+=(my-ry)*0.11;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+})();
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target);}});
+},{threshold:0.07});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
