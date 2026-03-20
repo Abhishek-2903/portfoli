@@ -357,18 +357,118 @@ footer{
 
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
-  .nav-links,.nav-hire{display:none;}
-  .hero-right{border-left:none;padding-left:0;border-top:1px solid var(--rule);padding-top:2rem;max-width:100%;}
+  /* cursor off on touch */
+  .cursor,.cursor-ring{display:none;}
+  body{cursor:auto;}
+
+  /* ticker smaller */
+  .ticker{font-size:0.6rem;padding:7px 0;}
+  .ticker-sep{margin:0 1.2rem;}
+
+  /* nav — just logo + hire */
+  nav{padding:0 4%;height:52px;top:24px;}
+  .nav-links{display:none;}
+  .nav-hire{
+    padding:0.38rem 0.9rem;font-size:0.7rem;
+  }
+  .nav-logo{font-size:0.95rem;}
+
+  /* ── HERO ── */
+  #hero{padding-top:76px;min-height:auto;}
+  .hero-top{
+    flex-direction:column;align-items:flex-start;
+    padding:2.5rem 4% 0;gap:1.5rem;
+  }
+  .hero-name{
+    font-size:clamp(3.2rem,14vw,5rem);
+    line-height:0.9;
+  }
+  .hero-eyebrow{font-size:0.62rem;margin-bottom:1rem;}
+  .hero-right{
+    border-left:none;padding-left:0;
+    border-top:1px solid var(--rule);padding-top:1.5rem;
+    max-width:100%;width:100%;
+  }
+  .hero-desc{font-size:0.85rem;}
+  .hero-bottom{
+    flex-direction:column;align-items:flex-start;
+    padding:1.2rem 4%;gap:1.2rem;margin-top:2rem;
+  }
+  .hero-stats{gap:1.8rem;flex-wrap:wrap;}
+  .stat-n{font-size:1.6rem;}
+  .stat-l{font-size:0.58rem;}
+  .hero-scroll{display:none;}
+
+  /* ── SECTION HEADERS ── */
+  .sec-header{flex-direction:column;gap:0.4rem;padding-bottom:1rem;margin-bottom:2.5rem;}
+  .sec-title{font-size:1.7rem;}
+  .sec-num{font-size:0.62rem;}
+
+  /* ── SECTIONS padding ── */
+  #skills,#experience,#projects,#education,#contact{padding:4rem 0;}
+  .container{padding:0 4%;}
+
+  /* ── SKILLS ── */
   .skill-row{grid-template-columns:1fr;}
-  .skill-cat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.07);padding-right:0;padding-bottom:0.6rem;}
-  .skill-items{padding-left:0;}
-  .exp-block{grid-template-columns:1fr;}
-  .proj-item{grid-template-columns:40px 1fr;}
+  .skill-cat{
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,0.07);
+    padding-right:0;padding-bottom:0.5rem;
+    padding-top:1rem;
+  }
+  .skill-items{padding-left:0;padding-top:0.7rem;padding-bottom:1rem;}
+  .pill{font-size:0.7rem;padding:0.25rem 0.7rem;}
+
+  /* ── EXPERIENCE ── */
+  .exp-block{grid-template-columns:1fr;gap:2rem;}
+  .exp-company{font-size:1.3rem;}
+  .exp-role-tag{font-size:0.65rem;}
+  .exp-points li{font-size:0.85rem;padding:0.8rem 0 0.8rem 1.5rem;}
+
+  /* ── PROJECTS ── */
+  .proj-item{
+    grid-template-columns:36px 1fr;
+    gap:1rem;padding:1.8rem 0;
+  }
   .proj-arrow{display:none;}
-  .edu-row{grid-template-columns:1fr;}
-  .edu-gpa-big,.edu-gpa-sub{border-left:none;padding-left:0;border-top:1px solid var(--rule);padding-top:1.5rem;text-align:left;}
+  .proj-index{font-size:1.6rem;}
+  .proj-name{font-size:1.2rem;}
+  .proj-desc{font-size:0.82rem;}
+  .proj-tag{font-size:0.6rem;}
+
+  /* ── EDUCATION ── */
+  .edu-row{grid-template-columns:1fr;gap:0;}
+  .edu-uni{font-size:1.4rem;}
+  .edu-gpa-big{
+    border-left:none;padding-left:0;
+    border-top:1px solid var(--rule);
+    padding-top:1.5rem;margin-top:1.5rem;
+    text-align:left;font-size:4rem;
+  }
+  .edu-gpa-sub{
+    border-left:none;padding-left:0;
+    text-align:left;
+  }
+
+  /* ── CONTACT ── */
+  .contact-big{font-size:clamp(2.2rem,10vw,3.5rem);}
   .contact-links{grid-template-columns:1fr;}
-  .contact-link{border-right:none;border-bottom:1px solid var(--rule);padding-left:0!important;padding-right:0!important;}
+  .contact-link{
+    border-right:none;
+    border-bottom:1px solid var(--rule);
+    padding:1.4rem 0 !important;
+  }
+  .contact-link:last-child{border-bottom:none;}
+
+  /* ── FOOTER ── */
+  footer{flex-direction:column;align-items:flex-start;gap:0.4rem;padding:1.2rem 4%;}
+}
+
+/* extra small phones */
+@media(max-width:380px){
+  .hero-name{font-size:3rem;}
+  .hero-stats{gap:1.2rem;}
+  .stat-n{font-size:1.4rem;}
 }
 </style>
 </head>
